@@ -7,8 +7,12 @@ const projectSchema = new mongoose.Schema({
     type: String
   },
   client: {
-    name: String,
-    logo: String
+    name: {
+      type: String
+    },
+    logo: {
+      type: String
+    }
   },
   projectType: {
     type: String
@@ -31,12 +35,18 @@ const projectSchema = new mongoose.Schema({
   solution: {
     type: String
   },
+
   technologies: {
     type: [String]
+  },
+  thumbnail: {
+    type: String
   },
   url: {
     type: String
   },
-  images: [String]
+  images: {
+    type: [String]
+  }
 })
 module.exports = mongoose.model('Project', projectSchema);
