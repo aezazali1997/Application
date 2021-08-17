@@ -9,7 +9,9 @@
       "@constants":["./src/constants/index.ts"],
       "@interfaces":["./src/interfaces/index.ts"],
       "@icons": ["./src/icons/index.ts"],
-      "@models":["./src/models/index.ts"]
+      "@models":["./src/models/index.ts"],
+      "@enums":["./src/enum/index.ts"]
+
 
     }, 
     "skipLibCheck": true,

@@ -30,6 +30,7 @@ module.exports = {
       {
         "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
       }
-    ]
+    ],
+    "no-useless-escape": "off"
   },
 }

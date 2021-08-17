@@ -4,10 +4,10 @@ import { Button, Box, Typography, TextField } from '@material-ui/core';
 import { ImageUploader } from './components/ImageUploader/ImageUploader'
 import { useMutation } from '@apollo/client'
 import { ScreenShotUploader } from './components/ScreenShotUploader/ScreenShotUploader'
-import { validationSchema } from '@services/Form'
+import { validationSchema } from '@services/FormValidation/FormValidation'
 import { Technologies } from './components/Technologies/Technologies'
 import { DatePicker } from './components/DatePicker/DatePicker'
-import { createMutation, updateMutation } from '@services/Mutation';
+import { createProject, updateProject } from '@services/Mutation';
 import { getQuery } from '@services/Query'
 import { AddProjectModel } from '@models'
 import { useParams } from 'react-router-dom'
@@ -19,12 +19,11 @@ const AddProject: React.FC<Props> = ({ data }) => {
   const Project: AddProjectModel = new AddProjectModel(data);
   const { id } = useParams();
   const [disableSubmit, setDisableSubmit] = useState<boolean>(true);
-  const [formSubmit] = useMutation(createMutation,
+  const [formSubmit] = useMutation(createProject,
     { refetchQueries: () => [{ query: getQuery }] })
-  const [updateSubmit] = useMutation(updateMutation,
+  const [updateSubmit] = useMutation(updateProject,
     { refetchQueries: () => [{ query: getQuery }] })
   const onSubmit = async ({ challenge, client, end, images, projectType, role, solution, start, subtitle, summary, technologies, thumbnail, title, url }: AddProjectModel) => {
-    const temp: AddProjectModel = new AddProjectModel();
     data ? await updateSubmit({
       variables: {
         id,
@@ -52,7 +51,7 @@ const AddProject: React.FC<Props> = ({ data }) => {
   }
   const formik = useFormik({
     initialValues: Project,
-    /*   validationSchema, */
+    validationSchema,
     onSubmit,
     enableReinitialize: true,
   })

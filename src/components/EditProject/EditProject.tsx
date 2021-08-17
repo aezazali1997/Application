@@ -14,7 +14,7 @@ export const EditProject = () => {
   })
   return (
     <div>
-      <AddProject data={data?.UI__getProject} />
+      {<AddProject data={data?.UI__getProject} />}
     </div>
   )
 }

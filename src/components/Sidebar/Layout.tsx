@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { useTheme, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, Button, Menu, MenuItem, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -6,27 +6,45 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { ListButton } from './ListButton/ListButton'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { Route, Routes } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import { useOktaAuth, SecureRoute } from '@okta/okta-react'
 import Projects from '../Projects/Projects'
+import { EditProject } from '../EditProject/EditProject'
 import AddProject from '../AddProject/AddProject';
 import { LIST } from '@constants';
-import { EditProject } from '../EditProject/EditProject'
-import { useStyles } from './Sidebat.style';
+import { useStyles } from './Layout.style';
 
 const Sidebar = () => {
+  const { oktaAuth, authState } = useOktaAuth();
+  const [user, setUser] = useState<string | undefined>('');
   const classes = useStyles();
   const theme = useTheme();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
-
+  const [open, setOpen] = useState(false);
+  /* fucntions */
+  const logout = async () => {
+    try {
+      oktaAuth.tokenManager.clear();
+      await oktaAuth.signOut()
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+  useEffect(() => {
+    if (authState?.isAuthenticated) {
+      oktaAuth.getUser().then(info => {
+        setUser(info.name)
+      })
+    }
+  }, [authState, oktaAuth])
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -35,9 +53,9 @@ const Sidebar = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   return (
     <div className={classes.root}>
+
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -69,8 +87,8 @@ const Sidebar = () => {
             anchorEl={anchorEl}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem >{user ? user : ''}</MenuItem>
+            <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
@@ -102,15 +120,9 @@ const Sidebar = () => {
       </Drawer>
       <main className={classes.content}>
         <Routes>
-          <Route path="/new">
-            <AddProject />
-          </Route>
-          <Route path="/edit/:id">
-            <EditProject />
-          </Route>
-          <Route path="/projects">
-            <Projects />
-          </Route>
+          <SecureRoute path="/new" element={<AddProject />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/edit/:id" element={<EditProject />} />
         </Routes>
       </main>
     </div>

@@ -30,6 +30,5 @@ export class AddProjectModel {
     this.thumbnail= data?.thumbnail || '';
     this.technologies= data?.technologies || [];
     this.images= data?.images || [];
-    /*  Object.assign(this,data) */
   }
 }

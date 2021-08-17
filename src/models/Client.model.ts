@@ -3,7 +3,6 @@ export class ClientModel {
   logo:string;
   constructor(data? : Partial<ClientModel>)
   {
-
     this.name=data?.name || '';
     this.logo=data?.logo || '';
   }

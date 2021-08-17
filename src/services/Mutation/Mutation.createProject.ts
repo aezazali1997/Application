@@ -1,5 +1,5 @@
 import {gql} from '@apollo/client';
-export const createMutation=gql`
+export const createProject=gql`
 mutation saveProject(
   $title: String!
   $subtitle: String!

@@ -7,6 +7,7 @@ import { getQuery } from '@services/Query';
 import { styles } from './Projects.styles';
 
 const Projects = () => {
+
   const classes = styles();
   const { loading, data } = useQuery<ProjectType>(getQuery);
   return (
