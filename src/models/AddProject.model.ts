@@ -1,4 +1,5 @@
-import {ClientModel} from './index'
+import {ClientModel} from '@models'
+
 export class AddProjectModel {
   title:string;
   subtitle:string;

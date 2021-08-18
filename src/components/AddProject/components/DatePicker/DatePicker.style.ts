@@ -1,5 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles'
-export const useStyles = makeStyles(() => ({
+import { makeStyles } from '@shared'
+
+export const styles = makeStyles({
   root: {
     '& > *': {
       margin: '0',
@@ -7,4 +8,4 @@ export const useStyles = makeStyles(() => ({
     },
   },
 
-}))
+})

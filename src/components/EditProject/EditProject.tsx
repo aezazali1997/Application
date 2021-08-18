@@ -1,20 +1,21 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import AddProject from '../AddProject/AddProject';
 import { useQuery } from '@apollo/client'
+import { AddProject } from '@components/AddProject/AddProject';
 import { getById } from '@services/Query'
-import { Project } from '@types'
+import { Project } from '@types';
+import { Progress } from '@shared'
+
 export const EditProject = () => {
   const { id } = useParams();
-  const { data } = useQuery<Project>(getById, {
+  const { data, loading } = useQuery<Project>(getById, {
     variables: {
       "id": `${id}`
     },
-
   })
   return (
     <div>
-      {<AddProject data={data?.UI__getProject} />}
+      {loading ? <Progress /> : <AddProject data={data?.UI__getProject} />}
     </div>
   )
 }

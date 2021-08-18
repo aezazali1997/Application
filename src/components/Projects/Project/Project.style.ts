@@ -1,5 +1,6 @@
-import {createUseStyles} from 'react-jss'
-export const styles=createUseStyles({
+import {makeStyles} from '@shared'
+
+export const styles=makeStyles({
   btn:{
     backgroundColor:"transparent",
     border:'none',

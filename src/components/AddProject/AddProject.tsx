@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik';
-import { Button, Box, Typography, TextField } from '@material-ui/core';
-import { ImageUploader } from './components/ImageUploader/ImageUploader'
+import { Button, Box, Typography, TextField } from '@shared';
 import { useMutation } from '@apollo/client'
-import { ScreenShotUploader } from './components/ScreenShotUploader/ScreenShotUploader'
+import { useParams } from 'react-router-dom'
+import { ImageUploader } from './components/ImageUploader/ImageUploader'
 import { validationSchema } from '@services/FormValidation/FormValidation'
+import { ScreenShotUploader } from './components/ScreenShotUploader/ScreenShotUploader'
 import { Technologies } from './components/Technologies/Technologies'
 import { DatePicker } from './components/DatePicker/DatePicker'
 import { createProject, updateProject } from '@services/Mutation';
 import { getQuery } from '@services/Query'
 import { AddProjectModel } from '@models'
-import { useParams } from 'react-router-dom'
-import { useStyles } from './AddProject.style';
+import { styles } from './AddProject.style';
+
 type Props = {
   data?: AddProjectModel
 }
-const AddProject: React.FC<Props> = ({ data }) => {
+
+export const AddProject: React.FC<Props> = ({ data }) => {
   const Project: AddProjectModel = new AddProjectModel(data);
   const { id } = useParams();
   const [disableSubmit, setDisableSubmit] = useState<boolean>(true);
@@ -56,8 +58,7 @@ const AddProject: React.FC<Props> = ({ data }) => {
     enableReinitialize: true,
   })
   const { values, errors, touched, handleChange, handleSubmit } = formik;
-
-  const classes = useStyles();
+  const classes = styles();
   return (
     <Box>
       <Typography variant="h4" color="textSecondary" >{data ? 'Edit' : 'Add'} Project</Typography>
@@ -76,7 +77,7 @@ const AddProject: React.FC<Props> = ({ data }) => {
         <TextField label="Challenge" name="challenge" value={values.challenge} onChange={handleChange} error={touched.challenge && !!errors.challenge} helperText={touched.challenge && errors.challenge} />
         <TextField label="Solution*" name="solution" value={values.solution} onChange={handleChange} error={touched.solution && !!errors.solution} helperText={touched.solution && errors.solution} />
         <TextField label="URL*" name="url" value={values.url} onChange={handleChange} error={touched.url && !!errors.url} helperText={touched.url && errors.url} />
-        <Technologies formik={formik} />
+        <Technologies formik={formik} projects={Project.technologies} />
         <ImageUploader formik={formik} />
         <ScreenShotUploader formik={formik} setDisableSubmit={setDisableSubmit} />
         <br />
@@ -86,4 +87,3 @@ const AddProject: React.FC<Props> = ({ data }) => {
     </Box>
   )
 }
-export default AddProject

@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client'
-import client from '@services/Apollo/Apollo'
+import { client } from '@services/Apollo/Apollo'
 
 ReactDOM.render(
   <Router>

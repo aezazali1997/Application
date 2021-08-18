@@ -1,28 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { useTheme, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, Button, Menu, MenuItem, IconButton } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { ListButton } from './ListButton/ListButton'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { } from '@material-ui/core';
+import {
+  MenuIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  AccountCircleIcon,
+  useTheme,
+  CssBaseline,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+  Drawer,
+  Divider,
+  List
+} from '@shared'
 import { Routes, Route } from 'react-router-dom'
-import { useOktaAuth, SecureRoute } from '@okta/okta-react'
-import Projects from '../Projects/Projects'
-import { EditProject } from '../EditProject/EditProject'
-import AddProject from '../AddProject/AddProject';
-import { LIST } from '@constants';
-import { useStyles } from './Layout.style';
+import { useOktaAuth } from '@okta/okta-react'
+import { Projects } from '@components/Projects/Projects'
+import { EditProject } from '@components/EditProject/EditProject'
+import { AddProject } from '@components/AddProject/AddProject'
+import { Buttons } from '@constants';
+import { SideBarButton } from './SideBarButton/SideBarButton'
+import { styles } from './Layout.style';
 
-const Sidebar = () => {
+export const Layout = () => {
+
   const { oktaAuth, authState } = useOktaAuth();
   const [user, setUser] = useState<string | undefined>('');
-  const classes = useStyles();
+  const classes = styles();
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openMenu = Boolean(anchorEl);
   const [open, setOpen] = useState(false);
-  /* fucntions */
+
   const logout = async () => {
     try {
       oktaAuth.tokenManager.clear();
@@ -45,17 +60,15 @@ const Sidebar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   return (
     <div className={classes.root}>
-
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -113,14 +126,14 @@ const Sidebar = () => {
         <Divider />
         <List>
           {
-            LIST.map((list, index) => (
-              <ListButton key={index} list={list} />
+            Buttons.map((button, index) => (
+              <SideBarButton key={index} button={button} />
             ))}
         </List>
       </Drawer>
       <main className={classes.content}>
         <Routes>
-          <SecureRoute path="/new" element={<AddProject />} />
+          <Route path="/new" element={<AddProject />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/edit/:id" element={<EditProject />} />
         </Routes>
@@ -128,4 +141,3 @@ const Sidebar = () => {
     </div>
   );
 }
-export default Sidebar;

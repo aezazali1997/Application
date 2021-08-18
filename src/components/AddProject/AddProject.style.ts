@@ -1,5 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles'
-export const useStyles = makeStyles((theme) => ({
+import { makeStyles } from '@shared'
+import {Theme} from '@material-ui/core'
+
+export const styles = makeStyles((theme:Theme) => ({
   root: {
     margin: "10px 0px",
     position: 'relative',
@@ -45,7 +47,5 @@ export const useStyles = makeStyles((theme) => ({
       width:40,
       maxHeight:40,
     },
-
-
   }
 }));

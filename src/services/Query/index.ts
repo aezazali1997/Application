@@ -1,2 +1,2 @@
-export * from './Query.getAllProjects';
-export * from './Query.getProjectById';
+export * from './getAllProjects.Query';
+export * from './getProjectById.Query';

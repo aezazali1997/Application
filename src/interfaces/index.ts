@@ -1,1 +1,1 @@
-export * from '../interfaces/Technologies';
+export * from './Technologies.interface';

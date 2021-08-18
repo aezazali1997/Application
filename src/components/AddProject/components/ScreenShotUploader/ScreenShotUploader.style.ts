@@ -1,5 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles'
-export const useStyles = makeStyles(() => ({
+import { makeStyles } from '@shared'
+
+export const styles = makeStyles(() => ({
   input: {
     display: "none"
   },

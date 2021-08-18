@@ -18,7 +18,9 @@ module.exports = {
             '^@icons': './src/icons/index.ts',
             '^@interfaces': './src/interfaces/index.ts',
             '^@models': './src/models/index.ts',
-            '^@enums': './src/enum/index.ts'
+            '^@enums': './src/enum/index.ts',
+            '^@shared': './src/components/shared/index.ts',
+            '^@components/(.*)': './src/components/\\1'
 
           },
         },

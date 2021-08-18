@@ -1,21 +1,22 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { CircularProgress, Typography } from '@material-ui/core'
+import { Typography } from '@shared'
 import { ProjectType } from '@types';
-import Project from './Project/Project'
+import { Project } from './Project/Project'
 import { getQuery } from '@services/Query';
 import { styles } from './Projects.styles';
+import { ConfirmProvider } from 'material-ui-confirm'
+import { Progress } from '@shared'
 
-const Projects = () => {
+export const Projects = () => {
 
   const classes = styles();
   const { loading, data } = useQuery<ProjectType>(getQuery);
+
   return (
     <>
       {
-        loading ? <div className={classes.loader}>
-          <CircularProgress />
-        </div> : (
+        loading ? <Progress /> : (
           <>
             <Typography
               variant="h4" color="textSecondary" >Project Details</Typography> <br />
@@ -32,12 +33,14 @@ const Projects = () => {
                 </tr>
               </thead>
               <tbody>
-                {
-                  data?.UI__getAllProjects.map((singleProject) => {
-                    return <Project key={singleProject.id} project={singleProject} />
+                <ConfirmProvider>
+                  {
+                    data?.UI__getAllProjects.map((singleProject) => {
+                      return <Project key={singleProject.id} project={singleProject} />
+                    }
+                    )
                   }
-                  )
-                }
+                </ConfirmProvider>
               </tbody>
             </table>
           </>
@@ -46,5 +49,3 @@ const Projects = () => {
     </>
   )
 }
-
-export default Projects

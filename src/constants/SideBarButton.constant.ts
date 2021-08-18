@@ -1,4 +1,4 @@
-export const LIST = [
+export const Buttons = [
   {
     text: 'All Projects', link: 'projects',icon:'work_icon'
   },

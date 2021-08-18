@@ -1,25 +1,36 @@
 import React, { FC, useState } from 'react'
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom'
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import { DeleteIcon, EditIcon, VisibilityIcon } from '@shared';
 import { partialProjectProps } from '@types'
 import { useMutation } from '@apollo/client'
 import { deleteProjectByID } from '@services/Mutation';
-import { getQuery } from '@services/Query/Query.getAllProjects';
-import { styles } from './Project.style';
+import { getQuery } from '@services/Query/getAllProjects.Query';
 import { ProjectDetail } from './ProjectDetail/ProjectDetail';
+import { useConfirm } from 'material-ui-confirm'
+import { styles } from './Project.style';
+
 type Props = {
   project: partialProjectProps
 }
-const Project: FC<Props> = ({ project: { id, client, end, role, start, title, url } }) => {
+
+export const Project: FC<Props> = ({ project: { id, client, end, role, start, title, url } }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const confirm = useConfirm();
   const [deleteProject] = useMutation(deleteProjectByID, {
     refetchQueries: () => [{ query: getQuery }]
   }
   )
   const classes = styles();
+  const handleDelete = (id: string) => {
+    confirm({ description: `This will parmanently remove the Project!` })
+      .then(async () => {
+        await deleteProject({ variables: { id: id } });
+      })
+      .catch(() => {
+        /* catch the cancellation  */
+      })
+  }
   return (
     <>
       <tr>
@@ -40,9 +51,7 @@ const Project: FC<Props> = ({ project: { id, client, end, role, start, title, ur
         <td>{role}</td>
         <td>{url}</td>
         <td>
-          <button className={classes.btn} onClick={async () => {
-            await deleteProject({ variables: { id: id } });
-          }}><DeleteIcon ></DeleteIcon></button>
+          <button className={classes.btn} onClick={() => handleDelete(id)}><DeleteIcon ></DeleteIcon></button>
           <Link to={`/edit/${id}`}><button className={classes.btn}><EditIcon ></EditIcon></button></Link>
           <button onClick={() => {
             setOpen(true);
@@ -53,5 +62,3 @@ const Project: FC<Props> = ({ project: { id, client, end, role, start, title, ur
     </>
   )
 }
-
-export default Project;

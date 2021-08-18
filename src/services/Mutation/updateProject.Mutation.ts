@@ -1,4 +1,5 @@
 import {gql} from '@apollo/client';
+
 export const updateProject = gql`
 mutation updateProject (
   $id:ID!,
