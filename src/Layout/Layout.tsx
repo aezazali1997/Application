@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { } from '@material-ui/core';
+import { SnackbarProvider } from 'notistack'
 import {
   MenuIcon,
   ChevronLeftIcon,
@@ -132,12 +132,14 @@ export const Layout = () => {
         </List>
       </Drawer>
       <main className={classes.content}>
-        <Routes>
-          <Route path="/new" element={<AddProject />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/edit/:id" element={<EditProject />} />
-        </Routes>
+        <SnackbarProvider>
+          <Routes>
+            <Route path="/new" element={<AddProject />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/edit/:id" element={<EditProject />} />
+          </Routes>
+        </SnackbarProvider>
       </main>
-    </div>
+    </div >
   );
 }

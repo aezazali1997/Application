@@ -24,7 +24,7 @@ export const styles=makeStyles({
       boxShadow: '0 0 0 2px rgba(24, 144, 255, 0.2)',
     },
     '& input' : {
-      fontSize:10,
+      fontSize:15,
       height: 30,
       boxSizing: 'border-box',
       padding: '4px 6px',

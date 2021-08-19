@@ -7,7 +7,8 @@ import { useMutation } from '@apollo/client'
 import { deleteProjectByID } from '@services/Mutation';
 import { getQuery } from '@services/Query/getAllProjects.Query';
 import { ProjectDetail } from './ProjectDetail/ProjectDetail';
-import { useConfirm } from 'material-ui-confirm'
+import { useConfirm } from 'material-ui-confirm';
+import { useSnackbar } from 'notistack'
 import { styles } from './Project.style';
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
 }
 
 export const Project: FC<Props> = ({ project: { id, client, end, role, start, title, url } }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState<boolean>(false);
   const confirm = useConfirm();
   const [deleteProject] = useMutation(deleteProjectByID, {
@@ -25,11 +27,13 @@ export const Project: FC<Props> = ({ project: { id, client, end, role, start, ti
   const handleDelete = (id: string) => {
     confirm({ description: `This will parmanently remove the Project!` })
       .then(async () => {
-        await deleteProject({ variables: { id: id } });
+        await deleteProject({ variables: { id } });
+        enqueueSnackbar("Project Deleted!", { variant: 'success' })
       })
       .catch(() => {
         /* catch the cancellation  */
       })
+
   }
   return (
     <>

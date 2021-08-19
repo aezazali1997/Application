@@ -7,6 +7,10 @@ export const validationSchema = Yup.object({
   subtitle:Yup.string()
     .min(4,'Subtitle text is too short!')
     .required('Required!'),
+  client:Yup.object({
+    name:Yup.string()
+      .required('Required'),
+  }),
   projectType:Yup.string()
     .min(2,'Project Type not valid!')
     .required("Required!"),
@@ -14,9 +18,11 @@ export const validationSchema = Yup.object({
     .min(4,'Role is not valid!')
     .required('Required!'),
   summary:Yup.string()
-    .min(10,'Summary text too short!'),
+    .min(10,'Summary text too short!')
+    .required('Required!'),
   challenge:Yup.string()
-    .min(10,'Challenge text is too short!'),
+    .min(10,'Challenge text is too short!')
+    .required('Required!'),
   solution:Yup.string()
     .min(10,'Solution text is too short!')
     .required('Required!'),

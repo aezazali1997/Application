@@ -25,7 +25,7 @@ export const ImageUploader: FC<Props> = ({ formik, labelTxt }) => {
 
   return (
     <div className={classes.imageContainer}>
-      <label className={classes.UploadBtn} htmlFor="image">{labelTxt?.length ? 'Company`s Logo*' : 'Thumbnail*'}</label><br />
+      <label className={classes.UploadBtn} htmlFor="image">{labelTxt?.length ? 'Company`s Logo' : 'Thumbnail'}</label><br />
       <input
         accept="image/*"
         id={labelTxt?.length ? "logo" : 'thumbnail'}

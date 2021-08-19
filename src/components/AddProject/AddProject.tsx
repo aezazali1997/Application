@@ -11,6 +11,7 @@ import { DatePicker } from './components/DatePicker/DatePicker'
 import { createProject, updateProject } from '@services/Mutation';
 import { getQuery } from '@services/Query'
 import { AddProjectModel } from '@models'
+import { useSnackbar } from 'notistack'
 import { styles } from './AddProject.style';
 
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
 }
 
 export const AddProject: React.FC<Props> = ({ data }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const Project: AddProjectModel = new AddProjectModel(data);
   const { id } = useParams();
   const [disableSubmit, setDisableSubmit] = useState<boolean>(true);
@@ -50,6 +52,8 @@ export const AddProject: React.FC<Props> = ({ data }) => {
     }) : await formSubmit({
       variables: values
     })
+    enqueueSnackbar(`Project has been ${id ? 'Edited' : 'Created'}!`, { variant: 'success' })
+    formik.resetForm();
   }
   const formik = useFormik({
     initialValues: Project,
@@ -67,7 +71,7 @@ export const AddProject: React.FC<Props> = ({ data }) => {
         <TextField label="Subtitle*" name="subtitle" value={values.subtitle} onChange={handleChange} error={touched.subtitle && !!errors.subtitle} helperText={touched.subtitle && errors.subtitle} />
         <TextField label="Company Name*" name="name" value={values.client.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           formik.setFieldValue("client.name", e.currentTarget.value);
-        }} />
+        }} error={touched.client?.name && !!errors.client?.name} helperText={touched.client?.name && errors.client?.name} />
         <ImageUploader formik={formik} labelTxt="logo" />
         <TextField label="Project Type*" name="projectType" value={values.projectType} onChange={handleChange} error={touched.projectType && !!errors.projectType} helperText={touched.projectType && errors.projectType} />
         <DatePicker formik={formik} value={formik.values.start} name="start" />
@@ -81,7 +85,7 @@ export const AddProject: React.FC<Props> = ({ data }) => {
         <ImageUploader formik={formik} />
         <ScreenShotUploader formik={formik} setDisableSubmit={setDisableSubmit} />
         <br />
-        <Button className={classes.submitBtn} type="submit" variant="contained" color="primary" disabled={data ? false : disableSubmit}>{data ? 'Update' : 'Submit'}
+        <Button className={classes.submitBtn} type="submit" variant="contained" color="primary" disabled={!data ? disableSubmit : false}>{data ? 'Update' : 'Submit'}
         </Button>
       </form>
     </Box>

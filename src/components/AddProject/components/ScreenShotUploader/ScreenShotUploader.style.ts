@@ -13,14 +13,14 @@ export const styles = makeStyles(() => ({
   },
   imageContainer:{
     position:'relative',
-    margin:' 0',
+    margin:' 0 0 .5rem .5rem',
   },
 
   imgs:{
     display:'inline-block',
     width:80,
     maxHeight:80,
-    margin:'.2rem',
+    margin:'.5rem .2rem 0 .2rem',
   },
   "@media screen and (max-width:768px)": {
     root: {

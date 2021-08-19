@@ -1,1 +1,0 @@
-export * from './Technologies.interface';
