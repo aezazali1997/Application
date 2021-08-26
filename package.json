@@ -8,6 +8,7 @@
     "start": "nodemon app.js"
   },
   "dependencies": {
+    "@okta/jwt-verifier": "^1.0.0",
     "apollo-server": "^3.0.0",
     "apollo-server-express": "^3.0.0",
     "cors": "^2.8.5",

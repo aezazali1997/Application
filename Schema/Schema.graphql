@@ -2,6 +2,7 @@ scalar ISODate
 type Query {
   UI__getAllProjects:[Project]
   UI__getProject(id:ID!):Project
+  UI__getAllProjectNames:[Project]
 }
 input clientInput {
   name:String!

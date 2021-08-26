@@ -8,10 +8,9 @@ const connect = async () => {
       useFindAndModify: false,
       useUnifiedTopology: true,
     })
-    console.log('Connected to db ', con.connection.host)
   }
   catch (ex) {
-    console.log('Error', ex)
+    throw Error(ex)
   }
 }
 module.exports = connect;
