@@ -1,6 +1,6 @@
 import React from 'react';
 import { CloseIcon } from '@shared';
-import { styles } from './Tag.style'
+import { styles } from './Tag.style';
 
 export const Tag = ({ label, onDelete, ...props }: any) => {
   const classes = styles();
@@ -9,5 +9,5 @@ export const Tag = ({ label, onDelete, ...props }: any) => {
       <span>{label}</span>
       <CloseIcon onClick={onDelete} />
     </div>
-  )
-}
+  );
+};

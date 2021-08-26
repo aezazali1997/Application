@@ -1,51 +1,43 @@
-import { makeStyles } from '@shared'
-import {Theme} from '@material-ui/core'
+import { makeStyles } from '@shared';
+import { Theme } from '@material-ui/core';
 
-export const styles = makeStyles((theme:Theme) => ({
+export const styles = makeStyles((theme: Theme) => ({
   root: {
-    margin: "10px 0px",
+    margin: '10px 0px',
     position: 'relative',
-    display: "grid",
+    display: 'grid',
     gridTemplateColumns: 'repeat(2,1fr)',
     '& > *': {
       margin: theme.spacing(1),
-      width: "auto",
+      width: 'auto',
     },
   },
-  input: {
-    display: "none"
-  },
-  UploadBtn: {
-    fontSize: 16,
-    color: "rgb(118, 118, 118)",
-    textAlign: 'left',
-    display: 'inline-block',
-    marginBottom: 10,
-  },
   submitBtn: {
-    width: "30rem",
+    width: '30rem',
   },
-  imageContainer:{
-    position:'relative',
+  overlay: {
+    position: 'fixed',
+    background: 'rgba(0,0,0,.4)',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
   },
-
-  imgs:{
-    display:'inline-block',
-    width:80,
-    maxHeight:80,
-    margin:'.2rem',
+  progress: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    zIndex: 2,
+    color: '#3f51b5',
   },
-  "@media screen and (max-width:768px)": {
+  '@media screen and (max-width:768px)': {
     root: {
       gridTemplateColumns: 'repeat(1,1fr)',
     },
     submitBtn: {
-      bottom: "-3%",
-      width:'auto',
+      bottom: '-3%',
+      width: 'auto',
     },
-    img:{
-      width:40,
-      maxHeight:40,
-    },
-  }
+  },
 }));

@@ -1,7 +1,7 @@
-import {makeStyles,Theme} from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core';
 
-const drawerWidth = 200;
-export const styles = makeStyles((theme: Theme) =>({
+const drawerWidth = 230;
+export const styles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
     flexGrow: 1,
@@ -65,5 +65,4 @@ export const styles = makeStyles((theme: Theme) =>({
   userProfile: {
     marginLeft: 'auto',
   },
-}),
-);
+}));

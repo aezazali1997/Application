@@ -10,5 +10,5 @@ export const Config = {
   clientId: CLIENT_ID,
   redirectUri: REDIRECT_URI,
   scopes: SCOPES.split(/\s+/),
-  pkce:true
+  pkce: true,
 };

@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
     "paths": {
-      "@services/*":["./src/services/*"],
-      "@types":["./src/types/index.ts"],
-      "@constants":["./src/constants/index.ts"],
-      "@interfaces":["./src/interfaces/index.ts"],
+      "@types": ["./src/types/index.ts"],
+      "@constants": ["./src/constants/index.ts"],
+      "@interfaces": ["./src/interfaces/index.ts"],
       "@icons": ["./src/icons/index.ts"],
-      "@models":["./src/models/index.ts"],
-      "@enums":["./src/enum/index.ts"],
-      "@shared":["./src/components/shared/index.ts"],
-      "@components/*":["./src/components/*"]
-
-
-    }, 
+      "@models": ["./src/models/index.ts"],
+      "@enums": ["./src/enum/index.ts"],
+      "@shared": ["./src/components/shared/index.ts"],
+      "@components/*": ["./src/components/*"]
+    },
     "baseUrl": "."
   },
   "exclude": ["build", "scripts", "acceptance-tests", "webpack"],

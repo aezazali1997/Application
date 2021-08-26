@@ -8,7 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -18,19 +18,20 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    "indent": ["error", 2],
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-trailing-spaces": [2, { "skipBlankLines": false }],
-    "no-multiple-empty-lines": [2, { "max": 2 }],
-    "react/prop-types": 0,
-    "@typescript-eslint/ban-ts-comment": 0,
-    "no-restricted-imports": [
-      "error",
+    indent: ['error', 2],
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-trailing-spaces': [2, { skipBlankLines: false }],
+    'no-multiple-empty-lines': [2, { max: 2 }],
+    'react/prop-types': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
+    'prefer-const': 0,
+    'no-restricted-imports': [
+      'error',
       {
-        "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
-      }
+        patterns: ['@material-ui/*/*/*', '!@material-ui/core/test-utils/*'],
+      },
     ],
-    "no-useless-escape": "off"
+    'no-useless-escape': 'off',
   },
-}
+};

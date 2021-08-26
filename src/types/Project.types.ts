@@ -1,5 +1,5 @@
-import {AddProjectModel} from '@models'
+import { AddProjectModel } from '@models';
 
 export type Project = {
-  UI__getProject : AddProjectModel
-}
+  UI__getProject: AddProjectModel;
+};

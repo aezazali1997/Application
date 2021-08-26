@@ -12,7 +12,6 @@ module.exports = {
         {
           alias: {
             '~': './src',
-            '^@services/(.*)': './src/services/\\1',
             '^@types': './src/types/index.ts',
             '^@constants': './src/constants/index.ts',
             '^@icons': './src/icons/index.ts',
@@ -20,8 +19,7 @@ module.exports = {
             '^@models': './src/models/index.ts',
             '^@enums': './src/enum/index.ts',
             '^@shared': './src/components/shared/index.ts',
-            '^@components/(.*)': './src/components/\\1'
-
+            '^@components/(.*)': './src/components/\\1',
           },
         },
       ],
@@ -34,4 +32,4 @@ module.exports = {
   webpack: {
     loaders: [{ test: /\.tsx?$/, loader: 'ts-loader' }],
   },
-}
+};

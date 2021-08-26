@@ -23,6 +23,6 @@
   },
   "include": [
     "src",
-    "src/services/Mutation/.deleteProject.Mutation.ts"
+    "src/apollo/Mutation/.deleteProject.Mutation.ts"
   ]
 }

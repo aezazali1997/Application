@@ -1,24 +1,24 @@
-import {makeStyles} from '@shared'
+import { makeStyles } from '@shared';
 
-export const styles=makeStyles({
+export const styles = makeStyles({
   input: {
-    display: "none"
+    display: 'none',
   },
   UploadBtn: {
     fontSize: 16,
-    color: "rgb(118, 118, 118)",
+    color: 'rgb(118, 118, 118)',
     textAlign: 'left',
     display: 'inline-block',
     marginBottom: 10,
   },
-  imageContainer:{
-    position:'relative',
-    margin:'-10px 0',
+  imageContainer: {
+    position: 'relative',
+    margin: '-10px 0',
   },
-  "@media screen and (max-width:768px)": {
-    img:{
-      width:40,
-      maxHeight:40,
-    }
-  }
-})
+  '@media screen and (max-width:768px)': {
+    img: {
+      width: 40,
+      maxHeight: 40,
+    },
+  },
+});

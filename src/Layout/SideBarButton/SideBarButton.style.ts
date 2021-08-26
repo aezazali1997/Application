@@ -1,8 +1,8 @@
-import {makeStyles} from '@shared'
+import { makeStyles } from '@shared';
 
-export const styles=makeStyles({
-  link:{
-    textDecoration:'none',
-    color:'black',
-  }
-})
+export const styles = makeStyles({
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+  },
+});

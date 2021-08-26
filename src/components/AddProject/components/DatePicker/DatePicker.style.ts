@@ -1,11 +1,10 @@
-import { makeStyles } from '@shared'
+import { makeStyles } from '@shared';
 
 export const styles = makeStyles({
   root: {
     '& > *': {
       margin: '0',
-      width: "100%",
+      width: '100%',
     },
   },
-
-})
+});

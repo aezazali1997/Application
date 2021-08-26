@@ -1,4 +1,4 @@
-import useAutocomplete  from '@material-ui/lab/Autocomplete';
+import useAutocomplete from '@material-ui/lab/Autocomplete';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -39,11 +39,19 @@ export {
   Divider,
   Menu,
   MenuItem,
+  Paper,
+  TableBody,
+  TableHead,
+  TableContainer,
+  TableRow,
+  Table,
+  Breadcrumbs,
+  Tooltip,
 } from '@material-ui/core';
 
 export {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker
+  KeyboardDatePicker,
 } from '@material-ui/pickers';
 export {
   CheckIcon,
@@ -56,5 +64,4 @@ export {
   EditIcon,
   VisibilityIcon,
   MenuIcon,
-}
-
+};
