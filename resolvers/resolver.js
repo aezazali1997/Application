@@ -4,7 +4,7 @@ const resolvers = {
   Query: {
     UI__getAllProjectNames: async () => {
       try {
-        return await Project.find({ });
+        return await Project.find({});
       }
       catch (ex) {
         console.log("Error! : Can't find Projects.\n", ex)
@@ -12,7 +12,7 @@ const resolvers = {
     },
     UI__getAllProjects: async () => {
       try {
-        return await Project.find({ });
+        return await Project.find({});
       }
       catch (ex) {
         console.log("Error! : Can't find Projects.\n", ex)
@@ -28,7 +28,10 @@ const resolvers = {
     },
   },
   Mutation: {
-    UI__createProject: async (_, { input }) => {
+    UI__createProject: async (_, { input }, { request }) => {
+      if (!request.isAuth) {
+        throw new Error('Unauthenticated')
+      }
       const values = JSON.parse(JSON.stringify(input))
       try {
         const _project = new Project(values);
@@ -39,7 +42,10 @@ const resolvers = {
         console.log("Error! : Can't Create.  \n", ex)
       }
     },
-    UI__deleteProject: async (_, { id }) => {
+    UI__deleteProject: async (_, { id }, { request }) => {
+      if (!request.isAuth) {
+        throw new Error('Unauthenticated')
+      }
       try {
         return await Project.findByIdAndRemove(id)
       }
@@ -47,7 +53,10 @@ const resolvers = {
         console.log("Error! : Can't delete. \n", ex)
       }
     },
-    UI__updateProject: async (_, { id, input }) => {
+    UI__updateProject: async (_, { id, input }, { request }) => {
+      if (!request.isAuth) {
+        throw new Error('Unauthenticated')
+      }
       try {
         return await Project.findOneAndUpdate({ "_id": id }, input, { new: true })
       }

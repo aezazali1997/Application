@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const connect = require('./config/connectDB');
 const startServer = require('./apollo/server');
-const ensureAuthentication = require('./Verification/verification');
+const ensureAuthentication = require('./middleware/verification');
 
 connect();
 const { parsed } = require('dotenv').config();

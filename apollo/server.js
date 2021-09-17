@@ -8,6 +8,7 @@ const startServer = async (app) => {
   const server = new ApolloServer({
     typeDefs: fs.readFileSync(path.join(__dirname, '../schema/Schema.graphql'), 'utf8'),
     resolvers,
+    context: ({ req, res }) => ({ request: req, response: res }),
     plugins: [
       ApolloServerPluginLandingPageGraphQLPlayground,
     ]

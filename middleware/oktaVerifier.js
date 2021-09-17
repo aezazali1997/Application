@@ -7,19 +7,25 @@ const oktajwtVerifier = new OktaJWTVerifier({
 const jwtVerifeir = async (request, response, next) => {
   const { authorization } = request.headers;
   if (!authorization) {
-    return response.status(401).send();
+    request.isAuth = false
+    return next();
   }
   const [authType, token] = authorization.trim().split(' ');
+  if (!token || token == '') {
+    request.isAuth = false;
+    return next();
+  }
   try {
     const { claims } = await oktajwtVerifier.verifyAccessToken(token, "api://default")
-
     if (!claims) {
-      return response.status(401).send();
+      request.isAuth = false;
+      return next();
     }
-    return next();
   } catch (error) {
-    console.log(error)
-    return response.status(401).send()
+    request.isAuth = false;
+    return next();
   }
+  request.isAuth = true;
+  return next();
 }
 module.exports = jwtVerifeir;
