@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Button, Box, Typography, TextField, Breadcrumbs } from '@shared';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,6 @@ import { getQuery } from '../../apollo/Query/index';
 import { AddProjectModel } from '@models';
 import { useSnackbar } from 'notistack';
 import { styles } from './AddProject.style';
-import { KEYS } from '../../enum/Hotkeys.enum'
 import {
   UPDATE_MSG,
   ERR_UPDATE_MSG,
@@ -28,21 +27,7 @@ type Props = {
 
 export const AddProject: React.FC<Props> = ({ data }) => {
   const { id } = useParams();
-  const handleKeyDown = (event: KeyboardEvent) => {
-    console.log(event.code)
-    if (id && event.code === KEYS.Update) {
-      handleSubmit()
-    }
-    else if (!id && event.code === KEYS.Create) {
-      handleSubmit()
-    }
-  }
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    }
-  }, [])
+
   const { enqueueSnackbar } = useSnackbar();
   const Project: AddProjectModel = new AddProjectModel(data);
 

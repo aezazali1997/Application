@@ -65,6 +65,7 @@ export const ScreenShotUploader: FC<Props> = ({ formik, setDisableSubmit }) => {
           Upload
         </Button>
         <br />
+        {/* formik.values are used when we upload the images and images are used when we use this exact same component for editing so images grab the images and map it to UI */}
         {uploading ? (
           <Progress left="94%" />
         ) : formik.values.images ? (

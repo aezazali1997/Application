@@ -5,11 +5,16 @@ import { Data } from '@types'
 import { Progress, Box, Breadcrumbs, Typography } from '@shared'
 import { Link } from 'react-router-dom'
 import { SingleProject } from './SingleProject/SingleProject'
-import { styles } from './ViewProject.style'
+import { styles } from './ViewProject.style';
+import { useSnackbar } from 'notistack';
+import { ERROR_MSG } from '@constants';
 export const ViewProject = () => {
   const classes = styles();
-  const { loading, data } = useQuery<Data>(getTitles);
-
+  const { loading, data, error } = useQuery<Data>(getTitles);
+  const { enqueueSnackbar } = useSnackbar();
+  const errorMsg = (msg: string) => {
+    enqueueSnackbar(`${msg}`, { variant: 'error' });
+  }
   return (
     <>
       <Box display="inline-block">
@@ -27,6 +32,9 @@ export const ViewProject = () => {
           }
           )
         )
+        }
+        {
+          error ? errorMsg(ERROR_MSG) : ''
         }
       </div>
     </>

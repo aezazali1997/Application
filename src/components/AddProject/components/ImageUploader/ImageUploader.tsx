@@ -53,16 +53,17 @@ export const ImageUploader: FC<Props> = ({ formik, labelTxt }) => {
         <Button variant="contained" color="primary" component="span">
           Upload
         </Button>
-        {uploading && formik.values.client.logo === undefined && (
+        {uploading ? (
           <Progress left="95%" />
-        )}
-        <ImageViewer
-          img={
-            labelTxt?.length
-              ? formik.values.client.logo
-              : formik.values.thumbnail
-          }
-        />
+        ) :
+          (<ImageViewer
+            img={
+              labelTxt?.length
+                ? formik.values.client.logo
+                : formik.values.thumbnail
+            }
+          />)
+        }
         <br />
       </label>
     </div>
