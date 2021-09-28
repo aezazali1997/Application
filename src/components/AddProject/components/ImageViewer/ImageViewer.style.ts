@@ -3,7 +3,7 @@ import { makeStyles } from '@shared';
 export const styles = makeStyles({
   img: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 0,
     right: 0,
     display: 'inline-block',
     width: 80,

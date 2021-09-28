@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Moment from 'react-moment';
 import { ProjectType } from '@types';
 import {
@@ -9,7 +9,6 @@ import {
   TableRow,
   TableHead,
 } from '@shared';
-import { ProjectDetail } from '../ProjectDetail/ProjectDetail';
 import { StyledTableCell } from './TableCell/TableCell';
 import { StyledTableRow } from './TableRow/TableRow';
 import { DeleteButton } from './DeleteButton/DeleteButton';
@@ -22,7 +21,6 @@ type Props = {
 
 export const CustomizedTables: React.FC<Props> = ({ data }) => {
   const classes = styles();
-  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <TableContainer component={Paper}>
@@ -57,9 +55,8 @@ export const CustomizedTables: React.FC<Props> = ({ data }) => {
                 <StyledTableCell>
                   <DeleteButton id={id} />
                   <EditButton id={id} />
-                  <ViewButton setOpen={setOpen} />
+                  <ViewButton id={id} />
                 </StyledTableCell>
-                <ProjectDetail open={open} setOpen={setOpen} id={id} />
               </StyledTableRow>
             )
           )}

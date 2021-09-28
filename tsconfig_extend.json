@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
+      "@/*":["./src/*"],
       "@types": ["./src/types/index.ts"],
       "@constants": ["./src/constants/index.ts"],
       "@interfaces": ["./src/interfaces/index.ts"],

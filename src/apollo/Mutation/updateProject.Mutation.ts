@@ -18,7 +18,7 @@ export const updateProject = gql`
     $technologies: [String!]!
     $images: [String!]!
   ) {
-    UI__updateProject(
+    updateProject(
       id: $id
       input: {
         title: $title

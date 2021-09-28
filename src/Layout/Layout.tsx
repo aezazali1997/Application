@@ -24,7 +24,6 @@ import { useOktaAuth } from '@okta/okta-react';
 import { Projects } from '@components/Projects/Projects';
 import { EditProject } from '@components/EditProject/EditProject';
 import { AddProject } from '@components/AddProject/AddProject';
-import { ViewProject } from '@components/ViewProject/ViewProject'
 import { Buttons } from '@constants';
 import { SideBarButton } from './SideBarButton/SideBarButton';
 import { styles } from './Layout.style';
@@ -142,10 +141,9 @@ export const Layout = () => {
           <Routes>
             <Route path="/new" element={<AddProject />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/view" element={<ViewProject />} />
             <Route path="/edit/:id" element={<EditProject />} />
             <Route path="/" element={<div><Typography align="center" variant="h2">Welcome to the Dashboard</Typography><br />
-              <Typography align="center" variant="h4">Mr. {user}</Typography>
+              {/* <Typography align="center" variant="h4">Mr. {user}</Typography> */}
             </div>} />
           </Routes>
         </SnackbarProvider>

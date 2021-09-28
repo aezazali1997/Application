@@ -59,6 +59,7 @@ export const AddProject: React.FC<Props> = ({ data }) => {
         .then(() => {
           enqueueSnackbar(`${CREATE_MSG}`, { variant: 'success' });
           formik.resetForm();
+          setDisableSubmit(true);
         })
         .catch(() => {
           enqueueSnackbar(`${ERR_CREATE_MSG}`, { variant: 'error' });

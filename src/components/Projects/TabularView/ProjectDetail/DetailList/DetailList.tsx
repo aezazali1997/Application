@@ -59,6 +59,13 @@ export const DetailList: FC<Props> = ({
             align="center"
             color="textPrimary"
             component="h4"
+            style={{
+              paddingBottom: 1,
+              borderBottom: "1px solid black",
+              width: "max-content",
+              marginInline: "auto",
+              marginBlock: 5
+            }}
           >
             Company Details
           </Typography>
@@ -68,12 +75,14 @@ export const DetailList: FC<Props> = ({
             </label>{' '}
             {client.name}
           </Typography>
-          <Typography variant="body1" color="textPrimary" component="p">
-            <label htmlFor="logo">
-              <strong>Logo </strong>{' '}
-            </label>
-            <img className={classes.logo} src={client.logo} alt="logo" />
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography variant="body1" color="textPrimary" component="p">
+              <label htmlFor="logo">
+                <strong>Logo </strong>
+              </label>
+            </Typography>
+            <img className={classes.logo} src={client.logo} alt="company logo" />
+          </Box>
         </Box>
         <hr />
         <Typography variant="body1" color="textPrimary" component="p">
@@ -142,6 +151,6 @@ export const DetailList: FC<Props> = ({
           </div>
         </Typography>
       </CardContent>
-    </Card>
+    </Card >
   );
 };

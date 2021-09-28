@@ -15,4 +15,13 @@ export const Tech = [
   'SCSS',
   'Tailwind',
   'JSS',
+  'Php',
+  'Wordpress',
+  'Contentfull',
+  'Bootstrap',
+  'Django',
+  'Ruby on Rails',
+  'SQL',
+  'DynamoDB',
+  'Hammer JS',
 ];

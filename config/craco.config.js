@@ -12,6 +12,7 @@ module.exports = {
         {
           alias: {
             '~': './src',
+            '^@/(.*)': './src/\\1',
             '^@types': './src/types/index.ts',
             '^@constants': './src/constants/index.ts',
             '^@icons': './src/icons/index.ts',

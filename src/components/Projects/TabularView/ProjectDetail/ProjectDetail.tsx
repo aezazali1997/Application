@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import {
   Dialog,
   List,
@@ -10,7 +10,7 @@ import {
 } from '@shared';
 import { CloseIcon } from '@shared';
 import { TransitionProps } from '@material-ui/core/transitions';
-import { getById } from '../../../apollo/Query/index';
+import { getById } from '@/apollo/Query';
 import { useQuery } from '@apollo/client';
 import { Progress } from '@shared';
 import { Project } from '@types';
@@ -28,11 +28,15 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-export const ProjectDetail: FC<Props> = ({ open, setOpen, id }) => {
+export const ProjectDetail: FC<Props> = ({ open, id, setOpen }) => {
   const { data } = useQuery<Project>(getById, {
     fetchPolicy: 'no-cache',
+
     variables: { id },
   });
+  useEffect(() => {
+    console.log(id)
+  }, [data]);
   const handleClose = () => {
     setOpen(false);
   };

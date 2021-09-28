@@ -1,5 +1,10 @@
 export const Buttons = [
   {
+    text: 'Home',
+    link: '/',
+    icon: 'home_icon',
+  },
+  {
     text: 'All Projects',
     link: 'projects',
     icon: 'work_icon',
@@ -8,10 +13,5 @@ export const Buttons = [
     text: 'Add Project',
     link: 'new',
     icon: 'add_icon',
-  },
-  {
-    text: 'View Project Title',
-    link: 'view',
-    icon: 'arrow_forward_icon',
   },
 ];

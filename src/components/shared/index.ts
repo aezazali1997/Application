@@ -1,2 +1,2 @@
 export * from './Progress/Progress';
-export * from './materialmports/index';
+export * from './Materialmports/index';

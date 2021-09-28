@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 export const createProject = gql`
   mutation saveProject(
     $title: String!
-    $subtitle: String!
+    $subtitle: String
     $client: clientInput!
     $projectType: String!
     $start: String!
@@ -17,7 +17,7 @@ export const createProject = gql`
     $technologies: [String!]!
     $images: [String!]!
   ) {
-    UI__createProject(
+    createProject(
       input: {
         title: $title
         subtitle: $subtitle
