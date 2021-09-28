@@ -1,52 +1,52 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const projectSchema = new mongoose.Schema({
   title: {
-    type: String
+    type: String,
   },
   subtitle: {
-    type: String
+    type: String,
   },
   client: {
     name: {
-      type: String
+      type: String,
     },
     logo: {
-      type: String
-    }
+      type: String,
+    },
   },
   projectType: {
-    type: String
+    type: String,
   },
   start: {
-    type: Date
+    type: Date,
   },
   end: {
-    type: Date
+    type: Date,
   },
   role: {
-    type: String
+    type: String,
   },
   summary: {
-    type: String
+    type: String,
   },
   challenge: {
-    type: String
+    type: String,
   },
   solution: {
-    type: String
+    type: String,
   },
 
   technologies: {
-    type: [String]
+    type: [String],
   },
   thumbnail: {
-    type: String
+    type: String,
   },
   url: {
-    type: String
+    type: String,
   },
   images: {
-    type: [String]
-  }
-})
-module.exports = mongoose.model('Project', projectSchema);
+    type: [String],
+  },
+});
+module.exports = mongoose.model("Project", projectSchema);

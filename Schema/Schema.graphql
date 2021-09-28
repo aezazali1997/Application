@@ -1,55 +1,53 @@
 scalar ISODate
 type Query {
-  UI__getAllProjects:[Project]
-  UI__getProject(id:ID!):Project
-  UI__getAllProjectNames:[Project]
+	UI__getAllProjects: [Project]
+	UI__getProject(id: ID!): Project
+	UI__getAllProjectNames: [Project]
 }
 input clientInput {
-  name:String!
-  logo:String!
+	name: String!
+	logo: String!
 }
 input projectInput {
-  title:String!
-  subtitle:String!
-  client:clientInput!
-  projectType:String!
-  start:String!
-  end:String!
-  role:String!
-  summary:String!
-  challenge:String!
-  solution:String!
-  technologies:[String!]!
-  thumbnail:String!
-  url:String!
-  images:[String!]!
+	title: String!
+	subtitle: String
+	client: clientInput!
+	projectType: String!
+	start: String!
+	end: String!
+	role: String!
+	summary: String!
+	challenge: String!
+	solution: String!
+	technologies: [String!]!
+	thumbnail: String!
+	url: String!
+	images: [String!]!
 }
 type Client {
-  id:ID!
-  name:String!
-  logo:String!
+	id: ID!
+	name: String!
+	logo: String!
 }
 type Project {
-  id:ID!
-  title:String!
-  subtitle:String!
-  client:Client!
-  projectType:String!
-  start:ISODate!
-  end:ISODate!
-  role:String!
-  summary:String!
-  challenge:String!
-  solution:String!
-  technologies:[String!]!
-  thumbnail:String!
-  url:String!
-  images:[String!]!
+	id: ID!
+	title: String!
+	subtitle: String!
+	client: Client!
+	projectType: String!
+	start: ISODate!
+	end: ISODate!
+	role: String!
+	summary: String!
+	challenge: String!
+	solution: String!
+	technologies: [String!]!
+	thumbnail: String!
+	url: String!
+	images: [String!]!
 }
-type Mutation{
-  UI__createProject(input:projectInput):Project
-  UI__deleteProject(id:ID!):Project
-  UI__updateProject(id:ID!,input:projectInput):Project
-  
-  
+type Mutation {
+	createProject(input: projectInput): Project
+	deleteProject(id: ID!): Project
+	updateProject(id: ID!, input: projectInput): Project
 }
