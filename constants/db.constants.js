@@ -1,6 +1,6 @@
-const DB = "Portfolio";
+const DB = "Dashboard";
 module.exports = {
-  mongoDB: {
-    connectionStr: `mongodb://localhost:27017/${DB}`,
-  },
+	mongoDB: {
+		connectionStr: `mongodb+srv://aezaz:aezaz1@cluster0.yipfw.mongodb.net/${DB}?retryWrites=true&w=majority`,
+	},
 };
