@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import {
   Dialog,
   List,
@@ -34,9 +34,6 @@ export const ProjectDetail: FC<Props> = ({ open, id, setOpen }) => {
 
     variables: { id },
   });
-  useEffect(() => {
-    console.log(id)
-  }, [data]);
   const handleClose = () => {
     setOpen(false);
   };
@@ -60,12 +57,12 @@ export const ProjectDetail: FC<Props> = ({ open, id, setOpen }) => {
             <CloseIcon />
           </IconButton>
           <Typography variant="h6">
-            {data?.UI__getProject.title} Details
+            {data?.UI__getProjectByID.title} Details
           </Typography>
         </Toolbar>
       </AppBar>
       <List className={classes.list}>
-        {!data ? <Progress /> : <DetailList data={data.UI__getProject} />}
+        {!data ? <Progress /> : <DetailList data={data.UI__getProjectByID} />}
       </List>
     </Dialog>
   );

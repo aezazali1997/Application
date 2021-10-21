@@ -86,7 +86,7 @@ export const AddProject: React.FC<Props> = ({ data }) => {
             Dashboard
           </Link>
           <Typography color="textPrimary">
-            {data ? 'Edit' : 'Create'} Project
+            {data ? 'Edit' : 'Add'} Project
           </Typography>
         </Breadcrumbs>
       </Box>

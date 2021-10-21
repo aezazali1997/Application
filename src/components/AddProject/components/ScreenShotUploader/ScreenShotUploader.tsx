@@ -19,7 +19,7 @@ export const ScreenShotUploader: FC<Props> = ({ formik, setDisableSubmit }) => {
     return new Promise((resolve) => {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('folder', 'thumbnail');
+      formData.append('folder', 'screenShot');
       formData.append('upload_preset', 'fyj0jf0p');
       axios
         .post(

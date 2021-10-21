@@ -16,7 +16,7 @@ export const EditProject = () => {
   });
   return (
     <div>
-      {loading ? <Progress /> : <AddProject data={data?.UI__getProject} />}
+      {loading ? <Progress /> : <AddProject data={data?.UI__getProjectByID} />}
     </div>
   );
 };

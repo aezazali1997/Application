@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const getById = gql`
   query getById($id: ID!) {
-    UI__getProject(id: $id) {
+    UI__getProjectByID(id: $id) {
       id
       title
       subtitle
