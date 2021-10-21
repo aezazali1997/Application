@@ -9,18 +9,20 @@ const resolvers = {
 				throw new Error("Error! : Can't find Projects.\n", ex);
 			}
 		},
-		UI__getProject: async (_, { id }) => {
+		UI__getProjectByID: async (_, { id }) => {
 			try {
 				return await Project.findById(id);
 			} catch (ex) {
 				throw new Error(`Error! : Can't find Project by the id. :${id} \n`, ex);
 			}
 		},
-		UI__getAllProjectNames: async () => {
+		UI__getByCustomId: async (_, { id }) => {
 			try {
-				return await Project.find({});
+				return await Project.findOne({
+					custom_id: id,
+				});
 			} catch (ex) {
-				throw new Error("Error! : Can't find Projects.\n", ex);
+				throw new Error("Error!", ex);
 			}
 		},
 	},
@@ -29,6 +31,11 @@ const resolvers = {
 			if (!request.isAuth) {
 				throw new Error("Unauthenticated");
 			}
+			let DocCount = 0;
+			await Project.countDocuments({}, function (err, count) {
+				DocCount = count;
+			});
+			input.custom_id = DocCount + 1;
 			const values = JSON.parse(JSON.stringify(input));
 			try {
 				const _project = new Project(values);

@@ -1,8 +1,8 @@
 scalar ISODate
 type Query {
 	UI__getAllProjects: [Project]
-	UI__getProject(id: ID!): Project
-	UI__getAllProjectNames: [Project]
+	UI__getProjectByID(id: ID!): Project
+	UI__getByCustomId(id:ID!):Project
 }
 input clientInput {
 	name: String!
@@ -45,6 +45,7 @@ type Project {
 	thumbnail: String!
 	url: String!
 	images: [String!]!
+	custom_id:Int
 }
 type Mutation {
 	createProject(input: projectInput): Project
